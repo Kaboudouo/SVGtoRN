@@ -21,8 +21,8 @@ for filename in os.listdir(in_folder_path):
         file_contents = file_contents.replace("<circle", "<Circle")
         file_contents = file_contents.replace("<mask", "<Mask")
         file_contents = file_contents.replace("<line", "<Line")
-        file_contents = file_contents.replace('fill="#D9D9D9"', "fill={color}")
-        file_contents = file_contents.replace('stroke="#D9D9D9"', "stroke={color}")
+        file_contents = file_contents.replace('fill="#D9D9D9"', "fill={color}") # Uses #D9D9D9 as reference to replace
+        file_contents = file_contents.replace('stroke="#D9D9D9"', "stroke={color}") # Replace to suit your needs
 
         with open(out_file_path, "w") as file:
             file.write(file_contents)
