@@ -26,5 +26,10 @@ for filename in os.listdir(in_folder_path):
 
         with open(out_file_path, "w") as file:
             file.write(file_contents)
+
+    if (os.path.exists(in_file_path)):
+        os.remove(in_file_path)
+    else:
+        print("File does not exist.")
         
 
