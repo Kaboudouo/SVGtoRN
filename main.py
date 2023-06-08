@@ -1,5 +1,6 @@
 # Written by Noa Chayer
 # 07-06-23
+# No interface | To be converted SVGs are placed in the SVGs folder > run main.py > RN Componts appear in RN-Components folder
 # This find and replace tool was made assuming a pre-existing interface with size and color. Modify to suit your needs.
 
 import os
