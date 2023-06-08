@@ -24,6 +24,9 @@ for filename in os.listdir(in_folder_path):
         file_contents = file_contents.replace('fill="#D9D9D9"', "fill={color}") # Uses #D9D9D9 as reference to replace
         file_contents = file_contents.replace('stroke="#D9D9D9"', "stroke={color}") # Replace to suit your needs
 
+        file_contents = re.sub(r'stroke-width="(\d+)"', r'strokeWidth={\1}', file_contents)
+        file_contents = re.sub('stroke-linecap', 'strokeLinecap', file_contents)
+
         with open(out_file_path, "w") as file:
             file.write(file_contents)
 
