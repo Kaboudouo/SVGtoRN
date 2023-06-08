@@ -1,3 +1,7 @@
+# Written by Noa Chayer
+# 07-06-23
+# This find and replace tool was made assuming a pre-existing interface with size and color. Modify to suit your needs.
+
 import os
 import re
 
@@ -34,5 +38,3 @@ for filename in os.listdir(in_folder_path):
         os.remove(in_file_path)
     else:
         print("File does not exist.")
-        
-
