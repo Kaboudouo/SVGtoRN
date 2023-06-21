@@ -35,6 +35,9 @@ for filename in os.listdir(in_folder_path):
         file_contents = file_contents.replace("<g", "<G")
         file_contents = file_contents.replace("</g", "</G")
 
+        file_contents = file_contents.replace("<r", "<R")
+        file_contents = file_contents.replace("</r", "</R")
+
         file_contents = file_contents.replace('fill="#D9D9D9"', "fill={color}") # Uses #D9D9D9 as reference to replace
         file_contents = file_contents.replace('stroke="#D9D9D9"', "stroke={color}") # Replace to suit your needs
 
