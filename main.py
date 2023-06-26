@@ -5,6 +5,7 @@
 
 import os
 import re
+import string
 
 in_folder_path = './SVGs'
 out_folder_path = './RN-Components'
@@ -19,32 +20,17 @@ for filename in os.listdir(in_folder_path):
         
         file_contents = re.sub(r'<svg width="(\d+)" height="(\d+)"', "<Svg width={size} height={size}", file_contents)    
         file_contents = file_contents.replace('xmlns="http://www.w3.org/2000/svg"', "")
-        file_contents = file_contents.replace("</svg", "</Svg")
 
-        file_contents = file_contents.replace("<path", "<Path")
-        file_contents = file_contents.replace("<rect", "<Rect")
-        file_contents = file_contents.replace("<circle", "<Circle")
-        file_contents = file_contents.replace("<mask", "<Mask")
+        for letter in string.ascii_lowercase:
+            file_contents = file_contents.replace("<"+letter, "<"+letter.upper())
+            file_contents = file_contents.replace("</"+letter, "</"+letter.upper())
 
-        file_contents = file_contents.replace("<line", "<Line")
-        file_contents = file_contents.replace("</line", "</Line")
-        file_contents = file_contents.replace("<stop", "<Stop")
-        file_contents = file_contents.replace("<defs", "<Defs")
-        file_contents = file_contents.replace("</defs", "</Defs")
-
-        file_contents = file_contents.replace("<g", "<G")
-        file_contents = file_contents.replace("</g", "</G")
-
-        file_contents = file_contents.replace("<r", "<R")
-        file_contents = file_contents.replace("</r", "</R")
-
-        file_contents = file_contents.replace('fill="#D9D9D9"', "fill={color}") # Uses #D9D9D9 as reference to replace
-        file_contents = file_contents.replace('stroke="#D9D9D9"', "stroke={color}") # Replace to suit your needs
+        file_contents = file_contents.replace('"#D9D9D9"', "{color}") # Uses #D9D9D9 as reference to replace main color
+        file_contents = file_contents.replace('"#000000"', "{subColor}") # Uses #000000 as reference to replace sub color
 
         file_contents = re.sub(r'stroke-width="(\d+)"', r'strokeWidth={\1}', file_contents)
-        file_contents = re.sub('stroke-linecap', 'strokeLinecap', file_contents)
-        file_contents = re.sub('stop-color', 'stopColor', file_contents)
-
+        file_contents = re.sub(r"(?<=\.)[a-z](?=-)", lambda x: x.group().upper(), file_contents, flags=re.IGNORECASE)
+        
         with open(out_file_path, "w") as file:
             file.write(file_contents)
 
