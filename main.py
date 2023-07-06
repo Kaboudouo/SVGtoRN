@@ -29,7 +29,7 @@ for filename in os.listdir(in_folder_path):
         file_contents = file_contents.replace('"#000000"', "{subColor}") # Uses #000000 as reference to replace sub color
 
         file_contents = re.sub(r'stroke-width="(\d+)"', r'strokeWidth={\1}', file_contents)
-        file_contents = re.sub(r"(?<=\.)[a-z](?=-)", lambda x: x.group().upper(), file_contents, flags=re.IGNORECASE)
+        file_contents = re.sub(r"(^|[-_])([a-zA-Z])", lambda x: x.group(2).upper(), file_contents)
         
         with open(out_file_path, "w") as file:
             file.write(file_contents)
