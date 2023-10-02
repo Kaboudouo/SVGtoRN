@@ -18,7 +18,7 @@ for filename in os.listdir(in_folder_path):
     with open(in_file_path, "r") as file:
         file_contents = file.read()
         
-        file_contents = re.sub(r'<svg width="(\d+)" height="(\d+)"', "<Svg width={size} height={size}", file_contents)    
+        file_contents = re.sub(r'<svg width="(\d+)" height="(\d+)"', "<Svg width={width} height={height}", file_contents)    
         file_contents = file_contents.replace('xmlns="http://www.w3.org/2000/svg"', "")
 
         for letter in string.ascii_lowercase:
