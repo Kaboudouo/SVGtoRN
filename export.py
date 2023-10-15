@@ -16,6 +16,6 @@ with open(output_file_name, 'w') as output_file:
             base_name = os.path.splitext(file_name)[0]
 
 
-            output_file.write(f'export {{ default as {base_name} }} from "../../../../assets/exercises/avatarSvgs/{base_name}";\n')
+            output_file.write(f'export {{ default as {base_name} }} from "../../../../assets/exercises/fullSvgs/{base_name}";\n')
 
 print(f"Exports written to {output_file_name}")
